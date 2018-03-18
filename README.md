@@ -1,7 +1,7 @@
 # Github Trends
 
-Script designed to list 20 most trending repository created within last 7 days.
-Script lists these repositories sorted descending by stars with amount of open issues for each of repo. 
+Script is aimed to list 20 most trending repositories created within last 7 days.
+Script prints these repositories urls sorted descending by stars with amount of open issues for each of repo. 
 
 # How to Install
 
