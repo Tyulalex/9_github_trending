@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 def get_trending_repositories(top_size, days_ago=7):
     since_date_dt = datetime.now().date() - timedelta(days=days_ago)
-    url = '{}'.format('https://api.github.com/search/repositories')
+    url = 'https://api.github.com/search/repositories'
     response = requests.get(
         url=url,
         params={
