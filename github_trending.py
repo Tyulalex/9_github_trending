@@ -4,17 +4,18 @@ from datetime import datetime, timedelta
 
 def get_trending_repositories(top_size, days_ago=7):
     since_date_dt = datetime.now().date() - timedelta(days=days_ago)
-    since_date_str = datetime.strftime(since_date_dt, "%Y-%m-%d")
     url = '{}'.format('https://api.github.com/search/repositories')
     response = requests.get(
         url=url,
         params={
-            'q': 'created:>{since_date} sort:stars'.format(
-                since_date=since_date_str)
+            'q': 'created:>{since_date}'.format(
+                since_date=since_date_dt.strftime('%Y-%m-%d')),
+            'sort': 'stars',
+            'order': 'desc'
         }
     )
     if response.ok:
-        return response.json()['items'][:top_size - 1]
+        return response.json()['items'][:top_size]
     return []
 
 
@@ -38,5 +39,5 @@ if __name__ == '__main__':
         print(
             repo['html_url'],
             repo['description'],
-            " | Open Issues: {}".format(open_issues_amount)
+            ' | Open Issues: {}'.format(open_issues_amount)
         )
